@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="t1">22sp</dimen>
+    <dimen name="t2">20sp</dimen>
+    <dimen name="t3">18sp</dimen>
+    <dimen name="t4">16sp</dimen>
+    <dimen name="t5">14sp</dimen>
+    <dimen name="t6">12sp</dimen>
 </resources>

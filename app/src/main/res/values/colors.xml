@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="text_color">#666666</color>
+    <color name="remind_bg_color">#ccf7db97</color>
+    <color name="remind_text_color">#b14b01</color>
+    <color name="dark_gray">#A3A3A3</color>
+    <color name="empty_text_color">#c1c1c1</color>
+    <color name="bg_gray">#D3D3D3</color>
+    <color name="transparent">#00000000</color>
+    <color name="gray">#7a7a7a</color>
+    <color name="green">#00a64a</color>
+    <color name="red">#d61818</color>
+    <color name="driver_color">#cbcbcb</color>
+    <color name="menu_driver_color">#353733</color>
+    <color name="home_bg_color">#f1f1f1</color>
+    <color name="menu_bg_color">#3d3f3b</color>
+    <color name="menu_item_pressed_color">#363835</color>
+    <color name="menu_item_normal_color">#434541</color>
+    <color name="refresh_text_color">#acacac</color>
+    <color name="month_group_text_color">#a5a5a5</color>
+    <color name="month_setting_text_color">#919191</color>
+    <color name="list_item_pressed_color">#e6e6e6</color>
+    <color name="list_item_color">#fcfcfc</color>
+    <color name="orange_text">#ee8d10</color>
+
+
+    <color name="login_hint">#bcbcbc</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#80000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="help_view">#ff404040</color>
+    <color name="header_main_color">#ffffff</color>
+    <color name="text_gray">#7a7a7a</color>
+    <color name="green_text_status">#00a64a</color>
+    <color name="red_text">#d61818</color>
+    <color name="green_finish_task">#02bc55</color>
+    <color name="event_text_color">#2a2a2a</color>
+    <color name="gray_nest_line">#d7d7d7</color>
+    <color name="green_walk_ling">#00ba53</color>
+    <color name="green_past_line">#7fbf9b</color>
+    <color name="btn_empty_update_text">#979797</color>
+    <color name="bg_msg_center_tab">#f8f8f8</color>
+    <color name="msg_center_indicator">#43d222</color>
+    <color name="vertical_line">#dedede</color>
+
+    //任务详细界面----
+    <color name="task_label">#7a7a7a</color>
+    <color name="task_top_bg">#f1f1f1</color>
+    <color name="task_line">#e8e8e8</color>
+    <color name="label_selected_event_type">#00a64a</color>
+    <color name="label_title_gray">#bcbcbc</color>
+    <color name="gridview_bg">#fcfcfc</color>
+
+    <color name="progressbar_bg">#ededed</color>
+    <color name="progressbar_second_bg">#02bc55</color>
+    <color name="exit_text_color">#d61818</color>
+    <color name="splash_update_nt_text_color">#aeaeae</color>
+    <color name="splash_down_nt_text_color">#a0a0a0</color>
+
+    <color name="gray_upload_error">#b9b9b9</color>
+    <color name="translucence_black">#99000000</color>
+    <color name="text_green">#16a154</color>
+    <color name="load_gray">#ebebeb</color>
+    <color name="setting_item_text">#333333</color>
+    <color name="divider">#e0e0e0</color>
+    <color name="event_templet_edit_hint">#999999</color>
+    <color name="save_btn_pressed">#039742</color>
+    <color name="save_btn_normal">#6abb5d</color>
+    <color name="save_btn_disable">#d1d1d1</color>
+    <color name="advert_text_color">#05bc55</color>
+    <color name="search_bg">#60000000</color>
+
+    <!-- 规范颜色 -->
+    <color name="c1_d1">#6abb5d</color>
+    <color name="c1_d2">#6abb5d</color>
+    <color name="c1_d3">#5ba150</color>
+    <color name="c1_n1">#02bc55</color>
+    <color name="c1_n2">#008e40</color>
+    <color name="c1_n3">#007233</color>
+    <color name="c2_d">#333333</color>
+    <color name="c2_n">#c8d6df</color>
+    <color name="c3_d">#666666</color>
+    <color name="c3_n">#89969f</color>
+    <color name="c4_d">#999999</color>
+    <color name="c4_n">#657581</color>
+    <color name="c5_d">#cccccc</color>
+    <color name="c5_n">#485361</color>
+    <color name="c6_d">#d1d1d1</color>
+    <color name="c6_n">#3b454f</color>
+    <color name="c7_d1">#e0e0e0</color>
+    <color name="c7_d2">#e0e0e0</color>
+    <color name="c7_n1">#343e4a</color>
+    <color name="c7_n2">#343e4a</color>
+    <color name="c8_d1">#f0f0f0</color>
+    <color name="c8_d2">#ffffff</color>
+    <color name="c8_d3">#e5e5e5</color>
+    <color name="c8_d4">#f0f0f0</color>
+    <color name="c8_d5">#ffffff</color>
+    <color name="c8_d6">#e5e5e5</color>
+    <color name="c8_n1">#1c262f</color>
+    <color name="c8_n2">#252f39</color>
+    <color name="c8_n3">#1e262e</color>
+    <color name="c8_n4">#1c262f</color>
+    <color name="c8_n5">#252f39</color>
+    <color name="c8_n6">#1e262e</color>
+    <color name="c9_d">#ffffff</color>
+    <color name="c9_n">#cacaca</color>
+    <color name="c10_d1">#fa5e5e</color>
+    <color name="c10_n1">#db4453</color>
+    <color name="c10_d2">#c74c4c</color>
+    <color name="c10_n2">#af3642</color>
+    <color name="c11_d1">#ff9200</color>
+    <color name="c11_d2">#b14b01</color>
+    <color name="c11_d3">#f7db97</color>
+    <color name="c11_d4">#be710d</color>
+    <color name="c11_n1">#bd8d33</color>
+    <color name="c11_n2">#b14b01</color>
+    <color name="c11_n3">#f7db97</color>
+    <color name="c11_n4">#aa7d2e</color>
+    <color name="c12_n">#000000</color>
+    <color name="c12_d">#000000</color>
+    <color name="c13_d">#d6d6d6</color>
+    <color name="c13_n">#3c4755</color>
+    <color name="c14_d">#4d4d4d</color>
+    <color name="c14_n">#1c262f</color>
+    <color name="c15_d">#ffffff</color>
+    <color name="c15_n">#636e7a</color>
+    <color name="c17_d">#fafafa</color>
+    <color name="c17_n">#1f2933</color>
+    <color name="c18_d">#ffaadd</color>
+
+</resources>
+

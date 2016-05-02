@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/user_manage_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/menu_item_selector"
+            android:onClick="onClick">
+
+            <ImageView
+                android:id="@+id/user_manage_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/user_manage"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_manage_icon"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/t2"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="@string/user_manage"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/question_publish_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/menu_item_selector"
+            android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/question_publish_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/question_publish"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/question_publish_icon"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/t2"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:text="@string/question_publish"/>
+            </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/question_manage_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/menu_item_selector"
+            android:onClick="onClick">
+
+            <ImageView
+                android:id="@+id/question_manage_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/question_manage"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_manage_icon"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/t2"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="@string/question_manage"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/exit_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/menu_item_selector"
+            android:onClick="onClick">
+
+            <ImageView
+                android:id="@+id/exit_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/exit"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/exit_icon"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/t2"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="@string/exit"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_background"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="@color/c8_d2">
+
+    <TextView
+        android:id="@+id/title_left_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/btn_title_selector"
+        android:gravity="center_vertical"
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:textColor="@color/c9_d"
+        android:textSize="@dimen/t3" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:maxEms="8"
+            android:singleLine="true"
+            android:textColor="@color/c2_d"
+            android:textSize="@dimen/t2"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/title_right_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:background="@null"
+        android:gravity="center"
+        android:maxWidth="96dp"
+        android:singleLine="true"
+        android:textColor="@drawable/title_right_text_selector"
+        android:textSize="@dimen/t3" />
+</RelativeLayout>
