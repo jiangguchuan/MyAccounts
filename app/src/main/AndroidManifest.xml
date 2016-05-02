@@ -18,12 +18,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RegisterActivity" />
-        <activity
-            android:name=".ui.AdminActivity"
-            android:label="@string/title_activity_admin" />
-        <activity
-            android:name=".ui.UserMangeActivity" />
-        <activity android:name=".ui.UserEditActivity"></activity>
+        <activity android:name=".ui.AdminActivity" />
+        <activity android:name=".ui.UserMangeActivity" />
+        <activity android:name=".ui.UserEditActivity" />
+        <activity android:name=".ui.QuestionManageActivity" />
+        <activity android:name=".ui.ExamActivity" />
+        <activity android:name=".ui.QuestionPublishActivity" />
+        <activity android:name=".ui.QuestionEditActivity" />
+        <activity android:name=".ui.UserActivity" />
     </application>
 
 </manifest>
