@@ -42,19 +42,15 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.user_manage_btn:
-                android.util.Log.e("jgc", "1");
                 startActivity(new Intent(this, UserMangeActivity.class));
                 break;
             case R.id.question_publish_btn:
-                android.util.Log.e("jgc", "2");
                 startActivity(new Intent(this, QuestionPublishActivity.class));
                 break;
             case R.id.question_manage_btn:
-                android.util.Log.e("jgc", "3");
                 startActivity(new Intent(this, QuestionManageActivity.class));
                 break;
             case R.id.exit_btn:
-                android.util.Log.e("jgc", "4");
                 onBackPressed();
                 break;
         }

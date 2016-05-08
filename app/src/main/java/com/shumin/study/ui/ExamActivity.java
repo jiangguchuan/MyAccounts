@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import com.shumin.study.R;
 import com.shumin.study.bean.Question;
+import com.shumin.study.database.OrmDBUtils;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class ExamActivity extends BaseActivity implements CheckBox.OnCheckedChan
     private int mType;
     private Question mCurrentQuestion;
     private int mCurrentIndex = 0;
+    private long mQuestionsId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class ExamActivity extends BaseActivity implements CheckBox.OnCheckedChan
         setContentView(R.layout.activity_exam);
 
         setTitleRightBtnText(getString(R.string.delete));
+
+        mQuestionsId = getIntent().getLongExtra(EXT_QUESTIONS_ID, 0);
 
         mSubject = (EditText) findViewById(R.id.subject_label);
         mSubmitBtn = (Button) findViewById(R.id.submit_btn);
@@ -60,21 +65,10 @@ public class ExamActivity extends BaseActivity implements CheckBox.OnCheckedChan
     }
 
     private void initQuestionList() {
-        for (int i = 0; i < 10; i++) {
-            Question question = new Question();
-            question.setSubject("第" + i + "题");
-            if (i % 2 == 0) {
-                question.setType(Question.TYPE_CHOICE);
-                question.setOption1("第一个选项");
-                question.setOption2("第二个选项");
-                question.setOption3("第三个选项");
-                question.setOption4("第四个选项");
-                question.setRightAnswer(1);
-            } else {
-                question.setType(Question.TYPE_JUDGMENT);
-                question.setCorrect(false);
-            }
-            mData.add(question);
+        try {
+            mData = OrmDBUtils.queryQuestionsByQuestionsId(mOrmDBHelper, mQuestionsId);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

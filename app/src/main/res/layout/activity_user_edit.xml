@@ -12,9 +12,10 @@
         android:layout_marginRight="45dp"
         android:layout_marginTop="30dp"
         android:background="@null"
-        android:hint="@string/username_hint"
         android:drawableLeft="@drawable/login_icon_user"
-        android:drawablePadding="10dp" />
+        android:drawablePadding="10dp"
+        android:enabled="false"
+        android:hint="@string/username_hint" />
 
     <View
         android:layout_width="match_parent"
@@ -32,9 +33,9 @@
         android:layout_marginRight="45dp"
         android:layout_marginTop="30dp"
         android:background="@null"
-        android:hint="@string/register_password_hint"
         android:drawableLeft="@drawable/login_icon_password"
-        android:drawablePadding="10dp" />
+        android:drawablePadding="10dp"
+        android:hint="@string/register_password_hint" />
 
     <View
         android:layout_width="match_parent"
@@ -55,5 +56,18 @@
         android:text="@string/is_manager"
         android:textColor="@color/c3_d"
         android:textSize="@dimen/t4" />
+
+    <Button
+        android:id="@+id/user_edit_submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/login_is_show_pwd"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_common_day"
+        android:text="@string/submit"
+        android:textColor="@color/c9_d"
+        android:textSize="@dimen/t1" />
 
 </LinearLayout>

@@ -13,10 +13,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.shumin.study.bean.UserInfo;
+import com.shumin.study.database.OrmDBHelper;
+import com.shumin.study.database.OrmDBUtils;
 import com.shumin.study.ui.AdminActivity;
 import com.shumin.study.ui.BaseActivity;
 import com.shumin.study.ui.RegisterActivity;
 import com.shumin.study.ui.UserActivity;
+
+import java.sql.SQLException;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -44,6 +49,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
 
         setTitleRightBtnText(getString(R.string.register));
+        insertDefaultAccount();
     }
 
     @Override
@@ -75,6 +81,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+    private void insertDefaultAccount() {
+        try {
+            UserInfo userInfo = OrmDBUtils.queryUserInfoByUsername(mOrmDBHelper, Constants.DEFAULT_MANAGER_USERNAME);
+            if (userInfo == null) {
+                userInfo = new UserInfo();
+                userInfo.setManager(true);
+                userInfo.setUserName(Constants.DEFAULT_MANAGER_USERNAME);
+                userInfo.setPassword(Constants.DEFAULT_MANAGER_PASSWORD);
+                OrmDBUtils.createOrUpdateUserInfo(mOrmDBHelper, userInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showOrHiddenPwd(boolean isChecked) {
         if (isChecked) {
             mPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
@@ -90,14 +111,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void login() {
         String username = mUsername.getText().toString();
         String password = mPassword.getText().toString();
-        if (username.equals("admin") && password.equals("admin")) {
-            startActivity(new Intent(this, AdminActivity.class));
-            clearLoginInfo();
-        } else if (username.equals("user1") && password.equals("123456")) {
-            startActivity(new Intent(this, UserActivity.class));
-            clearLoginInfo();
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+            Toast.makeText(this, R.string.cant_input_empty_userinfo, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        UserInfo userInfo = null;
+        try {
+            userInfo = OrmDBUtils.queryUserInfoByUsername(mOrmDBHelper, username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (userInfo == null) {
+            Toast.makeText(this, R.string.empty_username, Toast.LENGTH_LONG).show();
+        } else if (!password.equals(userInfo.getPassword())) {
+            Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, userInfo.isManager() ? AdminActivity.class : UserActivity.class);
+            startActivity(intent);
+            clearLoginInfo();
         }
     }
 

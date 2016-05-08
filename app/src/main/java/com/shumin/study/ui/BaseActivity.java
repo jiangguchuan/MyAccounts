@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.shumin.study.R;
+import com.shumin.study.database.OrmDBHelper;
 
 public abstract class BaseActivity extends ActionBarActivity {
 
@@ -22,12 +24,20 @@ public abstract class BaseActivity extends ActionBarActivity {
     private RelativeLayout mTitleBackground;
     private Dialog mInteractiveDlg;
     private LinearLayout mCustomTitleView;
+    protected OrmDBHelper mOrmDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        initDBHelper();
         intiActionBar(getContext());
+    }
+
+    private void initDBHelper() {
+        if (mOrmDBHelper == null) {
+            mOrmDBHelper = OpenHelperManager.getHelper(this, OrmDBHelper.class);
+        }
     }
 
     protected void intiActionBar(ActionBarActivity context) {
@@ -82,11 +92,16 @@ public abstract class BaseActivity extends ActionBarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mOrmDBHelper != null) {
+            OpenHelperManager.releaseHelper();
+            mOrmDBHelper = null;
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        initDBHelper();
     }
 
     @Override

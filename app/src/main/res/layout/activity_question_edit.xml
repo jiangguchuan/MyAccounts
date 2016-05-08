@@ -45,6 +45,7 @@
             android:textSize="@dimen/t3" />
 
         <EditText
+            android:id="@+id/option_1_input"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
@@ -73,6 +74,7 @@
             android:textSize="@dimen/t3" />
 
         <EditText
+            android:id="@+id/option_2_input"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
@@ -101,6 +103,7 @@
             android:textSize="@dimen/t3" />
 
         <EditText
+            android:id="@+id/option_3_input"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
@@ -129,6 +132,7 @@
             android:textSize="@dimen/t3" />
 
         <EditText
+            android:id="@+id/option_4_input"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"

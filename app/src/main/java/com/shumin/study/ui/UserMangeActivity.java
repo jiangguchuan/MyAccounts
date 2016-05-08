@@ -11,7 +11,9 @@ import android.widget.ListView;
 import com.shumin.study.R;
 import com.shumin.study.adapter.UserListAdapter;
 import com.shumin.study.bean.UserInfo;
+import com.shumin.study.database.OrmDBUtils;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class UserMangeActivity extends BaseActivity implements AdapterView.OnIte
 
     private ListView mListView;
     private List<UserInfo> mUserInfoList = new ArrayList<>();
+    private UserListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,26 +29,17 @@ public class UserMangeActivity extends BaseActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_user_mange);
 
         mListView = (ListView) findViewById(R.id.user_list);
-
-        initUserInfoList();
-
-        mListView.setAdapter(new UserListAdapter(this, mUserInfoList));
         mListView.setOnItemClickListener(this);
     }
 
     private void initUserInfoList() {
-        for(int i = 0; i < 10; i++) {
-            UserInfo info = new UserInfo();
-            info.setPassword("" + i);
-            if (i % 2 == 0) {
-                info.setUserName("管理员账号：  " + i);
-                info.setManager(true);
-            } else {
-                info.setUserName("普通账号：  " + i);
-                info.setManager(false);
-            }
-            mUserInfoList.add(info);
+        try {
+            mUserInfoList = OrmDBUtils.queryAllUserInfo(mOrmDBHelper);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        mAdapter = new UserListAdapter(this, mUserInfoList);
+        mListView.setAdapter(mAdapter);
     }
 
     @Override
@@ -66,6 +60,12 @@ public class UserMangeActivity extends BaseActivity implements AdapterView.OnIte
     @Override
     protected ActionBarActivity getContext() {
         return this;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initUserInfoList();
     }
 
     @Override

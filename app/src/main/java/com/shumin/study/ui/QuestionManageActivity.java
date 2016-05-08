@@ -11,7 +11,9 @@ import com.shumin.study.R;
 import com.shumin.study.adapter.QuestionsGridAdapter;
 import com.shumin.study.bean.Question;
 import com.shumin.study.bean.Questions;
+import com.shumin.study.database.OrmDBUtils;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,34 +36,18 @@ public class QuestionManageActivity extends BaseActivity implements AdapterView.
     }
 
     private void initQuestionsList() {
-        for(int i = 0; i < 10; i++) {
-            Questions questions = new Questions();
-            questions.setName("题库" + i);
-            questions.setDescription("这是第" + i + "套题");
-            questions.setCreateTime("创建于:2016-05-" + (i + 1));
-            questions.setLevel((i % 5) + 1);
-            questions.setQuestionCount(10 + i);
-
-            List<Question> questionList = new ArrayList<>();
-            for(int j = 0; j < 10; j++) {
-                Question question = new Question();
-                question.setSubject("第" + i + "题");
-                if (i % 2 == 0) {
-                    question.setType(Question.TYPE_CHOICE);
-                    question.setOption1("第一个选项");
-                    question.setOption2("第二个选项");
-                    question.setOption3("第三个选项");
-                    question.setOption4("第四个选项");
-                    question.setRightAnswer(1);
-                } else {
-                    question.setType(Question.TYPE_JUDGMENT);
-                    question.setCorrect(false);
-                }
-                questionList.add(question);
+        try {
+            mData = OrmDBUtils.queryAllQuestions(mOrmDBHelper);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for(Questions questions : mData) {
+            try {
+                List<Question> questionList = OrmDBUtils.queryQuestionsByQuestionsId(mOrmDBHelper, questions.getId());
+                questions.setQuestionCount(questionList.size());
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            questions.setQuestionList(questionList);
-            questions.setExamCount(questions.getQuestionList().size());
-            mData.add(questions);
         }
     }
 
