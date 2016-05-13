@@ -55,4 +55,9 @@
     <string name="choose_answer">请选择一个答案</string>
     <string name="empty_answer">选中的答案不能为空</string>
     <string name="empty_subject">题目不能为空</string>
+    <string name="changes_saved">已保存所有修改</string>
+    <string name="no_more_question">已经是最后一题了</string>
+    <string name="complete">完成</string>
+    <string name="bingo">回答正确</string>
+    <string name="unbingo">回答错误，正确答案：%1$s</string>
 </resources>

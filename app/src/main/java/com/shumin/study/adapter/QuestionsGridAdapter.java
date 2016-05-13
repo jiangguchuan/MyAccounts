@@ -31,6 +31,11 @@ public class QuestionsGridAdapter extends BaseAdapter {
         mData = data;
     }
 
+    public void updateData(List<Questions> data) {
+        mData = data;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return mData.size();

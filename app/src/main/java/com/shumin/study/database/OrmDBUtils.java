@@ -5,6 +5,8 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.shumin.study.bean.ExamHistory;
+import com.shumin.study.bean.ExamRecord;
 import com.shumin.study.bean.Question;
 import com.shumin.study.bean.Questions;
 import com.shumin.study.bean.UserInfo;
@@ -16,6 +18,23 @@ import java.util.List;
  * Created by Guchuan on 2016/5/8.
  */
 public class OrmDBUtils {
+
+    public static List<ExamHistory> queryAllExamHistory(OrmLiteSqliteOpenHelper helper) throws SQLException {
+        QueryBuilder<ExamHistory, Long> builder = getQueryBuilder(helper, ExamHistory.class);
+        return builder.query();
+    }
+
+    public static void createOrUpdateExamHistory(OrmLiteSqliteOpenHelper helper, ExamHistory history) {
+        getDao(helper, ExamHistory.class).createOrUpdate(history);
+    }
+
+    public static void createOrUpdateExamRecord(OrmLiteSqliteOpenHelper helper, ExamRecord record) {
+        getDao(helper, ExamRecord.class).createOrUpdate(record);
+    }
+
+    public static void deleteQuestion(OrmLiteSqliteOpenHelper helper, Question question) {
+        getDao(helper, Question.class).delete(question);
+    }
 
     public static void createOrUpdateQuestion(OrmLiteSqliteOpenHelper helper, Question question) {
         getDao(helper, Question.class).createOrUpdate(question);

@@ -7,12 +7,12 @@
         android:id="@+id/question_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="40dp"
         android:text="123"
-        android:textStyle="bold"
-        android:textSize="@dimen/t2" />
+        android:textSize="@dimen/t2"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/subject_label"
@@ -73,17 +73,36 @@
         android:textColor="@drawable/anwser_item_text"
         android:textSize="@dimen/t3" />
 
-    <Button
-        android:id="@+id/submit_btn"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="38dp"
-        android:layout_marginRight="38dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btn_common_day"
-        android:text="@string/next_question"
-        android:textColor="@color/c9_d"
-        android:textSize="@dimen/t1" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_common_day"
+            android:text="@string/submit"
+            android:textColor="@color/c9_d"
+            android:textSize="@dimen/t1" />
+
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_common_day"
+            android:text="@string/next_question"
+            android:textColor="@color/c9_d"
+            android:textSize="@dimen/t1" />
+    </LinearLayout>
+
 </RelativeLayout>

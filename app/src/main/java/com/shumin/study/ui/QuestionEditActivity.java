@@ -22,12 +22,13 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
         View.OnClickListener {
 
     public static final String EXT_QUESTIONS_ID = "questions_id";
+    public static final String EXT_INDEX = "index";
 
     private long mQuestionsId;
     private List<CheckBox> mCheckboxList = new ArrayList<>();
     private EditText mSubject;
     private List<EditText> mOptions = new ArrayList<>();
-    private int mCurrentCheckIndex = -1;
+    private int mCurrentSubjectIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,10 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
         findViewById(R.id.submit_btn).setOnClickListener(this);
 
         mSubject = (EditText) findViewById(R.id.subject_label);
+
+        mCurrentSubjectIndex = getIntent().getIntExtra(EXT_INDEX, 0);
+
+        nextSubject();
     }
 
     @Override
@@ -68,7 +73,8 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
 
     @Override
     protected void titleRightBtnOnClick() {
-
+        saveQuestion();
+        finish();
     }
 
     @Override
@@ -83,8 +89,6 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
             for (CheckBox checkBox : mCheckboxList) {
                 if (buttonView != checkBox) {
                     checkBox.setChecked(false);
-                } else {
-                    mCurrentCheckIndex = i;
                 }
                 i ++;
             }
@@ -103,6 +107,7 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
     private void saveQuestion() {
         int answerCount = 0;
         String subject = mSubject.getText().toString();
+        int selectedIndex = -1;
 
         if (TextUtils.isEmpty(subject)) {
             Toast.makeText(this, R.string.empty_subject, Toast.LENGTH_SHORT).show();
@@ -114,17 +119,27 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
                 answerCount ++;
             }
         }
+
+        for(int i = 0; i < mCheckboxList.size(); i++) {
+            CheckBox box = mCheckboxList.get(i);
+            if (box.isChecked()) {
+                selectedIndex = i;
+                break;
+            }
+        }
+
+
         if (answerCount < 1) {
             Toast.makeText(this, R.string.at_least_two_ansers, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (mCurrentCheckIndex == -1) {
+        if (selectedIndex == -1) {
             Toast.makeText(this, R.string.choose_answer, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (TextUtils.isEmpty(mOptions.get(mCurrentCheckIndex).getText())) {
+        if (TextUtils.isEmpty(mOptions.get(selectedIndex).getText())) {
             Toast.makeText(this, R.string.empty_answer, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -136,8 +151,18 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
         question.setOption2(mOptions.get(1).getText().toString());
         question.setOption3(mOptions.get(2).getText().toString());
         question.setOption4(mOptions.get(3).getText().toString());
-        question.setRightAnswer(mCurrentCheckIndex);
+        question.setRightAnswer(selectedIndex);
         question.setQuestionsId(mQuestionsId);
         OrmDBUtils.createOrUpdateQuestion(mOrmDBHelper, question);
+        nextSubject();
+    }
+
+    private void nextSubject() {
+        setTitleName(getString(R.string.question_index, mCurrentSubjectIndex + 1));
+        mSubject.setText("");
+        for(EditText option : mOptions) {
+            option.setText("");
+        }
+        mCurrentSubjectIndex ++;
     }
 }
