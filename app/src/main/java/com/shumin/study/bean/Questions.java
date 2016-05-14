@@ -13,6 +13,7 @@ import java.util.List;
 public class Questions {
 
     public static final String TABLE_NAME = "questions";
+    public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_DESC = "desc";
     public static final String COLUMN_TIME = "time";

@@ -22,6 +22,7 @@ public class ExamRecord {
     public static final String COLUMN_USER = "user";
     public static final String COLUMN_ANSWER = "answer";
     public static final String COLUMN_BINGO = "bingo";
+    public static final String COLUMN_HISTORY_ID = "history_id";
 
     public static final int TYPE_JUDGMENT = 1;
     public static final int TYPE_CHOICE = 2;
@@ -52,6 +53,8 @@ public class ExamRecord {
     private int mAnswer;
     @DatabaseField(columnName = COLUMN_BINGO)
     private boolean mBingo;
+    @DatabaseField(columnName = COLUMN_HISTORY_ID)
+    private long mHistoryId;
 
     public String getSubject() {
         return mSubject;
@@ -167,5 +170,13 @@ public class ExamRecord {
         mIsCorrect = question.isCorrect();
         mRightAnswer = question.getRightAnswer();
         mQuestionsId = question.getQuestionsId();
+    }
+
+    public long getHistoryId() {
+        return mHistoryId;
+    }
+
+    public void setHistoryId(long historyId) {
+        mHistoryId = historyId;
     }
 }

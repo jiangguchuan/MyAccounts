@@ -19,6 +19,15 @@ import java.util.List;
  */
 public class OrmDBUtils {
 
+    public static ExamHistory queryExamHistoryByQuestionsId(OrmLiteSqliteOpenHelper helper, long id) throws SQLException {
+
+        QueryBuilder<ExamHistory, Long> builder = getQueryBuilder(helper, ExamHistory.class);
+        return builder
+                .where()
+                .eq(ExamHistory.COLUMN_QUESTIONS_ID, id)
+                .queryForFirst();
+    }
+
     public static List<ExamHistory> queryAllExamHistory(OrmLiteSqliteOpenHelper helper) throws SQLException {
         QueryBuilder<ExamHistory, Long> builder = getQueryBuilder(helper, ExamHistory.class);
         return builder.query();
@@ -46,6 +55,14 @@ public class OrmDBUtils {
                 .where()
                 .eq(Question.COLUMN_QUESTIONS_ID, questionsId)
                 .query();
+    }
+
+    public static Questions queryQuestionsById(OrmLiteSqliteOpenHelper helper, long id) throws SQLException {
+        QueryBuilder<Questions, Long> builder = getQueryBuilder(helper, Questions.class);
+        return builder
+                .where()
+                .eq(Questions.COLUMN_ID, id)
+                .queryForFirst();
     }
 
     public static void createOrUpdateQuestions(OrmLiteSqliteOpenHelper helper, Questions questions) {

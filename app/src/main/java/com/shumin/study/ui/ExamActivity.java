@@ -2,7 +2,6 @@ package com.shumin.study.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.shumin.study.Utility;
 import com.shumin.study.bean.ExamHistory;
 import com.shumin.study.bean.ExamRecord;
 import com.shumin.study.bean.Question;
+import com.shumin.study.bean.Questions;
 import com.shumin.study.database.OrmDBUtils;
 
 import java.sql.SQLException;
@@ -382,10 +382,19 @@ public class ExamActivity extends BaseActivity implements CheckBox.OnCheckedChan
         OrmDBUtils.createOrUpdateExamHistory(mOrmDBHelper, history);
 
         try {
-            List<ExamHistory> list = OrmDBUtils.queryAllExamHistory(mOrmDBHelper);
-            for(ExamHistory h : list) {
-                android.util.Log.e("jgc", "" + h.getId());
+            ExamHistory h = OrmDBUtils.queryExamHistoryByQuestionsId(mOrmDBHelper, mQuestionsId);
+            for(ExamRecord record : mResultList) {
+                record.setHistoryId(h.getId());
+                OrmDBUtils.createOrUpdateExamRecord(mOrmDBHelper, record);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            Questions questions = OrmDBUtils.queryQuestionsById(mOrmDBHelper, mQuestionsId);
+            int examCount = questions.getExamCount() + 1;
+            questions.setExamCount(examCount);
+            OrmDBUtils.createOrUpdateQuestions(mOrmDBHelper, questions);
         } catch (SQLException e) {
             e.printStackTrace();
         }

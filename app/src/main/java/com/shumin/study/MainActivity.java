@@ -109,30 +109,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void login() {
-//        String username = mUsername.getText().toString();
-//        String password = mPassword.getText().toString();
-//        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-//            Toast.makeText(this, R.string.cant_input_empty_userinfo, Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//        UserInfo userInfo = null;
-//        try {
-//            userInfo = OrmDBUtils.queryUserInfoByUsername(mOrmDBHelper, username);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        if (userInfo == null) {
-//            Toast.makeText(this, R.string.empty_username, Toast.LENGTH_LONG).show();
-//        } else if (!password.equals(userInfo.getPassword())) {
-//            Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_LONG).show();
-//        } else {
-//            Intent intent = new Intent(this, userInfo.isManager() ? AdminActivity.class : UserActivity.class);
-//            startActivity(intent);
-//            clearLoginInfo();
-//        }
-        Utility.setStringPref(this, Utility.LOGGED_USER, "admin");
-            Intent intent = new Intent(this, AdminActivity.class);
+        String username = mUsername.getText().toString();
+        String password = mPassword.getText().toString();
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+            Toast.makeText(this, R.string.cant_input_empty_userinfo, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        UserInfo userInfo = null;
+        try {
+            userInfo = OrmDBUtils.queryUserInfoByUsername(mOrmDBHelper, username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (userInfo == null) {
+            Toast.makeText(this, R.string.empty_username, Toast.LENGTH_LONG).show();
+        } else if (!password.equals(userInfo.getPassword())) {
+            Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(this, userInfo.isManager() ? AdminActivity.class : UserActivity.class);
             startActivity(intent);
+            clearLoginInfo();
+        }
     }
 
     private void clearLoginInfo() {

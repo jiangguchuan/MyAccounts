@@ -60,4 +60,8 @@
     <string name="complete">完成</string>
     <string name="bingo">回答正确</string>
     <string name="unbingo">回答错误，正确答案：%1$s</string>
+    <string name="title_activity_pdf">阅读文献</string>
+    <string name="title_activity_exam_history">ExamHistoryActivity</string>
+    <string name="no_questions">暂时还没有题库</string>
+    <string name="random_questions">已随机为你抽取了第%1$s套题</string>
 </resources>
