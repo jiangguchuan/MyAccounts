@@ -81,8 +81,9 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.exit_btn:
-                intent = new Intent(this, PDFActivity.class);
-                startActivity(intent);
+//                intent = new Intent(this, PDFActivity.class);
+//                startActivity(intent);
+                finish();
                 break;
         }
     }

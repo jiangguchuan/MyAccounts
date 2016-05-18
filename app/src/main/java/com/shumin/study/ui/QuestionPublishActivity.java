@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.shumin.study.R;
+import com.shumin.study.Utility;
 import com.shumin.study.bean.Questions;
 import com.shumin.study.database.OrmDBUtils;
 
@@ -103,7 +104,7 @@ public class QuestionPublishActivity extends BaseActivity implements View.OnClic
         questions = new Questions();
         questions.setName(name);
         questions.setDescription(desc);
-        questions.setCreateTime(getDate());
+        questions.setCreateTime(Utility.getDate());
         questions.setLevel(level);
         OrmDBUtils.createOrUpdateQuestions(mOrmDBHelper, questions);
 
@@ -116,14 +117,6 @@ public class QuestionPublishActivity extends BaseActivity implements View.OnClic
             e.printStackTrace();
         }
 
-    }
-
-    public static String getDate() {
-        long time = System.currentTimeMillis();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(time);
-        return format.format(calendar.getTime());
     }
 
 }

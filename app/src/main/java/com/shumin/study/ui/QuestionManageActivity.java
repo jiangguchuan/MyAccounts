@@ -1,5 +1,7 @@
 package com.shumin.study.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -17,7 +19,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionManageActivity extends BaseActivity implements AdapterView.OnItemClickListener{
+public class QuestionManageActivity extends BaseActivity implements AdapterView.OnItemClickListener,
+        AdapterView.OnItemLongClickListener {
 
     private GridView mGridView;
     private List<Questions> mData = new ArrayList<>();
@@ -33,6 +36,7 @@ public class QuestionManageActivity extends BaseActivity implements AdapterView.
         mAdapter = new QuestionsGridAdapter(this, mData);
         mGridView.setAdapter(mAdapter);
         mGridView.setOnItemClickListener(this);
+        mGridView.setOnItemLongClickListener(this);
     }
 
     private void initQuestionsList() {
@@ -89,8 +93,33 @@ public class QuestionManageActivity extends BaseActivity implements AdapterView.
             Intent intent = new Intent(this, ExamActivity.class);
             intent.putExtra(ExamActivity.EXT_QUESTIONS_ID, info.getId());
             intent.putExtra(ExamActivity.EXT_QUESTIONS_NAME, info.getName());
-            intent.putExtra(ExamActivity.EXT_TYPE, getIntent().getIntExtra(ExamActivity.EXT_TYPE, ExamActivity.TYPE_EXAM));
+            intent.putExtra(ExamActivity.EXT_TYPE, getIntent().getIntExtra(ExamActivity.EXT_TYPE, ExamActivity.TYPE_EDIT));
             startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        android.util.Log.e("jgc", "position -> " + i);
+        final Questions questions = mData.get(i);
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.questions_delete_confirm, questions.getName()))
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        android.util.Log.e("jgc", "id -> " + questions.getId());
+                        try {
+                            OrmDBUtils.deleteQuestionsById(mOrmDBHelper, questions.getId());
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                        mData.remove(questions);
+                        mAdapter.updateData(mData
+                        );
+                    }
+                })
+                .setNegativeButton(R.string.no, null)
+                .show();
+        return true;
     }
 }

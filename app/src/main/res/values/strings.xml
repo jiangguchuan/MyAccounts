@@ -64,4 +64,8 @@
     <string name="title_activity_exam_history">ExamHistoryActivity</string>
     <string name="no_questions">暂时还没有题库</string>
     <string name="random_questions">已随机为你抽取了第%1$s套题</string>
+    <string name="documents">资料</string>
+    <string name="questions_delete_confirm">是否删除题库%1$s</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
 </resources>

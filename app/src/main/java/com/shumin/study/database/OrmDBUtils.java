@@ -74,6 +74,20 @@ public class OrmDBUtils {
         return builder.query();
     }
 
+    public static void deleteQuestionsById(OrmLiteSqliteOpenHelper helper, long id) throws SQLException {
+        DeleteBuilder<Questions, Long> deleteBuilder = getDeleteBuilder(helper, Questions.class);
+        deleteBuilder
+                .where()
+                .eq(Questions.COLUMN_ID, id);
+        deleteBuilder.delete();
+
+        DeleteBuilder<Question, Long> deleteBuilder1 = getDeleteBuilder(helper, Question.class);
+        deleteBuilder1
+                .where()
+                .eq(Question.COLUMN_QUESTIONS_ID, id);
+        deleteBuilder1.delete();
+    }
+
     public static void deleteUserInfo(OrmLiteSqliteOpenHelper helper, UserInfo userInfo) {
         getDao(helper, UserInfo.class).delete(userInfo);
     }

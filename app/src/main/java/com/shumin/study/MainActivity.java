@@ -49,7 +49,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
 
         setTitleRightBtnText(getString(R.string.register));
-        insertDefaultAccount();
+        Utility.insertDefaultAccount(mOrmDBHelper);
+        if (!Utility.getBooleanPref(this, Utility.INSERT_DEFAULT_QUESTIONS, false)) {
+            Utility.insertDefaultQuestions(this, mOrmDBHelper);
+        }
     }
 
     @Override
@@ -78,21 +81,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.login_bt:
                 login();
                 break;
-        }
-    }
-
-    private void insertDefaultAccount() {
-        try {
-            UserInfo userInfo = OrmDBUtils.queryUserInfoByUsername(mOrmDBHelper, Constants.DEFAULT_MANAGER_USERNAME);
-            if (userInfo == null) {
-                userInfo = new UserInfo();
-                userInfo.setManager(true);
-                userInfo.setUserName(Constants.DEFAULT_MANAGER_USERNAME);
-                userInfo.setPassword(Constants.DEFAULT_MANAGER_PASSWORD);
-                OrmDBUtils.createOrUpdateUserInfo(mOrmDBHelper, userInfo);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -126,6 +114,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         } else if (!password.equals(userInfo.getPassword())) {
             Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_LONG).show();
         } else {
+            Utility.setStringPref(this, Utility.LOGGED_USER, userInfo.getUserName());
             Intent intent = new Intent(this, userInfo.isManager() ? AdminActivity.class : UserActivity.class);
             startActivity(intent);
             clearLoginInfo();

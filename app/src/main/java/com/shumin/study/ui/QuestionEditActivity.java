@@ -108,18 +108,15 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
         int answerCount = 0;
         String subject = mSubject.getText().toString();
         int selectedIndex = -1;
-
         if (TextUtils.isEmpty(subject)) {
             Toast.makeText(this, R.string.empty_subject, Toast.LENGTH_SHORT).show();
             return;
         }
-
         for(EditText editText : mOptions) {
             if (!TextUtils.isEmpty(editText.getText())) {
                 answerCount ++;
             }
         }
-
         for(int i = 0; i < mCheckboxList.size(); i++) {
             CheckBox box = mCheckboxList.get(i);
             if (box.isChecked()) {
@@ -127,23 +124,18 @@ public class QuestionEditActivity extends BaseActivity implements CheckBox.OnChe
                 break;
             }
         }
-
-
         if (answerCount < 1) {
             Toast.makeText(this, R.string.at_least_two_ansers, Toast.LENGTH_SHORT).show();
             return;
         }
-
         if (selectedIndex == -1) {
             Toast.makeText(this, R.string.choose_answer, Toast.LENGTH_SHORT).show();
             return;
         }
-
         if (TextUtils.isEmpty(mOptions.get(selectedIndex).getText())) {
             Toast.makeText(this, R.string.empty_answer, Toast.LENGTH_SHORT).show();
             return;
         }
-
         Question question = new Question();
         question.setSubject(subject);;
         question.setType(Question.TYPE_CHOICE);
