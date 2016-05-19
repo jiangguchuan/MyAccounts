@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/documents_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="30dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/login_icon_user"
+        android:drawablePadding="10dp"
+        android:hint="@string/documents_name_hint" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/documents_name"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/login_input_lin_pressed" />
+
+    <GridView
+        android:id="@+id/image_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/documents_submit_btn"
+        android:layout_below="@+id/documents_name"
+        android:layout_marginTop="20dp"
+        android:horizontalSpacing="20dp"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:verticalSpacing="20dp" />
+
+    <Button
+        android:id="@+id/documents_submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/login_is_show_pwd"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_common_day"
+        android:text="@string/submit"
+        android:textColor="@color/c9_d"
+        android:textSize="@dimen/t1" />
+
+</RelativeLayout>

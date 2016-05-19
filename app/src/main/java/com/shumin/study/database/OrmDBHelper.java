@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.shumin.study.bean.Documents;
 import com.shumin.study.bean.ExamHistory;
 import com.shumin.study.bean.ExamRecord;
 import com.shumin.study.bean.Question;
@@ -40,6 +41,7 @@ public class OrmDBHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Question.class);
             TableUtils.createTable(connectionSource, ExamHistory.class);
             TableUtils.createTable(connectionSource, ExamRecord.class);
+            TableUtils.createTable(connectionSource, Documents.class);
         } catch (SQLException e) {
             android.util.Log.e("nsm", "catch exception in onCreate", e);
         }

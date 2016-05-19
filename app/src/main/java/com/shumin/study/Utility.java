@@ -65,7 +65,7 @@ public class Utility {
     }
 
     public static void insertDefaultQuestions(Context context, OrmLiteSqliteOpenHelper helper) {
-        String name = "默认题库1";
+        String name = "综合小测1";
         Questions questions = null;
         try {
             OrmDBUtils.queryQuestionsByName(helper, name);
@@ -278,7 +278,7 @@ public class Utility {
     }
 
     private static void insertDefaultQuestions2(Context context, OrmLiteSqliteOpenHelper helper) {
-        String name = "默认题库2";
+        String name = "综合小测2";
         Questions questions = null;
         try {
             OrmDBUtils.queryQuestionsByName(helper, name);
@@ -467,6 +467,14 @@ public class Utility {
     public static String getDate() {
         long time = System.currentTimeMillis();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        return format.format(calendar.getTime());
+    }
+
+    public static String getTime() {
+        long time = System.currentTimeMillis();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(time);
         return format.format(calendar.getTime());

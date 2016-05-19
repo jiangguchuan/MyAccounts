@@ -36,7 +36,7 @@
     <string name="confirm_and_edit_question">确认，开始录题</string>
     <string name="questions_edit">新建题库</string>
     <string name="question_edit_subject_hint">录入题目(限140字以内)</string>
-    <string name="question_edit_option_hint">录入选项(限16字以内)</string>
+    <string name="question_edit_option_hint">录入选项</string>
     <string name="question_edit">编辑题目</string>
     <string name="start_exam">开始测试</string>
     <string name="scan_question">浏览试题</string>
@@ -64,8 +64,20 @@
     <string name="title_activity_exam_history">ExamHistoryActivity</string>
     <string name="no_questions">暂时还没有题库</string>
     <string name="random_questions">已随机为你抽取了第%1$s套题</string>
+    <string name="file_choose">录入资料</string>
+    <string name="new_documents">新建</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="documents_list">资料列表</string>
+    <string name="documents_name_hint">请输入资料名称</string>
+    <string name="max_image_remind">最多添加四张图片</string>
+    <string name="min_image_remind">至少添加一张图片</string>
+    <string name="empty_name">名称不能为空</string>
     <string name="documents">资料</string>
-    <string name="questions_delete_confirm">是否删除题库%1$s</string>
     <string name="yes">是</string>
     <string name="no">否</string>
+    <string name="questions_delete_confirm">确认删除题库： %1$s ?</string>
+    <string name="add_img">添加图片</string>
+    <string name="display_img">浏览图片</string>
+    <string name="your_answer">回答错误，你的选择是： %1$s</string>
 </resources>

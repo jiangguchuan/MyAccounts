@@ -119,6 +119,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
             clearLoginInfo();
         }
+//        Intent intent = new Intent(this, UserActivity.class);
+//        startActivity(intent);
+//        clearLoginInfo();
     }
 
     private void clearLoginInfo() {

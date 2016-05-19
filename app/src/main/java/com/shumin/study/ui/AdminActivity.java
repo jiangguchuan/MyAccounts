@@ -51,7 +51,9 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener{
                 startActivity(new Intent(this, QuestionManageActivity.class));
                 break;
             case R.id.exit_btn:
-                onBackPressed();
+                Intent intent = new Intent(this, DocumentsActivity.class);
+                intent.putExtra(DocumentsActivity.EXT_INT_TYPE, DocumentsActivity.TYPE_ADMIN);
+                startActivity(intent);
                 break;
         }
     }

@@ -371,6 +371,7 @@ public class ExamActivity extends BaseActivity implements CheckBox.OnCheckedChan
         history.setUser(mUser);
         history.setQuestionsId(mQuestionsId);
         history.setQuestionsName(mQuestionsName);
+        history.setTime(Utility.getTime());
         int correctCount = 0;
         for(ExamRecord record : mResultList) {
             if (record.isBingo()) {

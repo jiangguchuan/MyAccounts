@@ -8,15 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.shumin.study.R;
-import com.shumin.study.bean.ExamHistory;
+import com.shumin.study.bean.Documents;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/5/14 0014.
+ * Created by Guchuan on 2016/5/17.
  */
-public class ExamHistoryAdapter extends BaseAdapter {
+public class DocumentListAdapter extends BaseAdapter {
 
     private final int[] ICON_BG_LIST = {
             R.drawable.service_icon_bg_1,
@@ -26,11 +26,16 @@ public class ExamHistoryAdapter extends BaseAdapter {
     };
 
     private Context mContext;
-    private List<ExamHistory> mData = new ArrayList<>();
+    private List<Documents> mData = new ArrayList<>();
 
-    public ExamHistoryAdapter(Context context, List<ExamHistory> data) {
-        mData = data;
+    public DocumentListAdapter(Context context, List<Documents> data) {
         mContext = context;
+        mData = data;
+    }
+
+    public void updateData(List<Documents> data) {
+        mData = data;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -39,17 +44,17 @@ public class ExamHistoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
-        return mData.get(i);
+    public Object getItem(int position) {
+        return mData.get(position);
     }
 
     @Override
-    public long getItemId(int i) {
-        return i;
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.documents_list_item, null);
@@ -62,12 +67,12 @@ public class ExamHistoryAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        ExamHistory info = mData.get(position);
-        holder.icon.setImageResource(R.drawable.icon_punchcard);
-        holder.icon.setBackgroundResource(ICON_BG_LIST[position % ICON_BG_LIST.length]);
-        holder.name.setText(info.getQuestionsName());
-        holder.content.setText("共回答" + info.getCompletedCount() + "题  " + "正确" + info.getCorrectCount() + "\n" + info.getTime());
+        Documents info = mData.get(position);
 
+        holder.icon.setBackgroundResource(ICON_BG_LIST[position % ICON_BG_LIST.length]);
+        holder.icon.setImageResource(R.drawable.icon_punchcard);
+        holder.name.setText(info.getName());
+        holder.content.setText("共有" + info.getImages().size() + "张图片");
         return convertView;
     }
 

@@ -5,6 +5,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.shumin.study.bean.Documents;
 import com.shumin.study.bean.ExamHistory;
 import com.shumin.study.bean.ExamRecord;
 import com.shumin.study.bean.Question;
@@ -18,6 +19,32 @@ import java.util.List;
  * Created by Guchuan on 2016/5/8.
  */
 public class OrmDBUtils {
+
+    public static List<ExamRecord> queryExamRecordByHistoryId(OrmLiteSqliteOpenHelper helper, long id) throws SQLException {
+        QueryBuilder<ExamRecord, Long> builder = getQueryBuilder(helper, ExamRecord.class);
+        return builder
+                .where()
+                .eq(ExamRecord.COLUMN_HISTORY_ID, id)
+                .query();
+    }
+
+    public static Documents queryDocumentsById(OrmLiteSqliteOpenHelper helper, long id) throws SQLException {
+        QueryBuilder<Documents, Long> builder = getQueryBuilder(helper, Documents.class);
+        return builder
+                .where()
+                .eq(Documents.COLUMN_ID, id)
+                .queryForFirst();
+    }
+
+    public static List<Documents> queryAllDocuments(OrmLiteSqliteOpenHelper helper) throws SQLException {
+        QueryBuilder<Documents, Long> builder = getQueryBuilder(helper, Documents.class);
+        return builder.query();
+    }
+
+    public static void createOrUpdateDocuments(OrmLiteSqliteOpenHelper helper, Documents documents) {
+        getDao(helper, Documents.class).createOrUpdate(documents);
+    }
+
 
     public static ExamHistory queryExamHistoryByQuestionsId(OrmLiteSqliteOpenHelper helper, long id) throws SQLException {
 

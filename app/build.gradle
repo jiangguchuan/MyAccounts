@@ -18,12 +18,21 @@ android {
         }
     }
 }
+android {
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
 
+    }
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:19.1.0'
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.j256.ormlite:ormlite-core:4.48'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
     compile files('libs/pdfbox-2.0.1.jar')
 }

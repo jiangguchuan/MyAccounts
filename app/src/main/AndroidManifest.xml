@@ -29,12 +29,13 @@
         <activity android:name=".ui.QuestionPublishActivity" />
         <activity android:name=".ui.QuestionEditActivity" />
         <activity android:name=".ui.UserActivity" />
-        <activity
-            android:name=".ui.PDFActivity"
-            android:label="@string/title_activity_pdf" />
-        <activity
-            android:name=".ui.ExamHistoryActivity"
-            android:label="@string/title_activity_exam_history"></activity>
+        <activity android:name=".ui.PDFActivity" />
+        <activity android:name=".ui.ExamHistoryActivity" />
+        <activity android:name=".ui.DocumentsActivity" />
+        <activity android:name=".ui.FileChooseActivity" />
+        <activity android:name=".ui.ImageDisplayActivity" />
+        <activity android:name=".ui.ExamDetailActivity" />
+        <activity android:name=".ui.ExamRecordActivity" />
     </application>
 
 </manifest>

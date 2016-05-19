@@ -15,6 +15,7 @@ public class ExamHistory {
     public static final String COLUMN_QUESTIONS_NAME = "questions_name";
     public static final String COLUMN_COMPLETED_COUNT = "completed_count";
     public static final String COLUMN_CORRECT_COUNT = "correct_count";
+    public static final String COLUMN_TIME = "time";
 
     @DatabaseField(generatedId = true, columnName = "id", unique = true)
     private long mId;
@@ -28,6 +29,8 @@ public class ExamHistory {
     private int mCompletedCount;
     @DatabaseField(columnName = COLUMN_CORRECT_COUNT)
     private int mCorrectCount;
+    @DatabaseField(columnName = COLUMN_TIME)
+    private String mTime;
 
     public long getId() {
         return mId;
@@ -75,5 +78,13 @@ public class ExamHistory {
 
     public void setCorrectCount(int correctCount) {
         mCorrectCount = correctCount;
+    }
+
+    public String getTime() {
+        return mTime;
+    }
+
+    public void setTime(String time) {
+        this.mTime = time;
     }
 }

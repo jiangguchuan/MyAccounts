@@ -63,13 +63,15 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
                     return;
                 }
                 Random random = new Random();
-                int index = random.nextInt() % list.size();
-                Toast.makeText(this, getString(R.string.random_questions, index), Toast.LENGTH_SHORT).show();
-                Questions questions = list.get(index);
-                intent.putExtra(ExamActivity.EXT_QUESTIONS_ID, questions.getId());
-                intent.putExtra(ExamActivity.EXT_QUESTIONS_NAME, questions.getName());
-                intent.putExtra(ExamActivity.EXT_TYPE, ExamActivity.TYPE_EXAM);
-                startActivity(intent);
+                int index = random.nextInt(list.size());
+                Toast.makeText(this, getString(R.string.random_questions, (index + 1)), Toast.LENGTH_SHORT).show();
+                if (index >= 0) {
+                    Questions questions = list.get(index);
+                    intent.putExtra(ExamActivity.EXT_QUESTIONS_ID, questions.getId());
+                    intent.putExtra(ExamActivity.EXT_QUESTIONS_NAME, questions.getName());
+                    intent.putExtra(ExamActivity.EXT_TYPE, ExamActivity.TYPE_EXAM);
+                    startActivity(intent);
+                }
                 break;
             case R.id.scan_question_btn:
                 intent = new Intent(this, QuestionManageActivity.class);
@@ -81,9 +83,9 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.exit_btn:
-//                intent = new Intent(this, PDFActivity.class);
-//                startActivity(intent);
-                finish();
+                intent = new Intent(this, DocumentsActivity.class);
+                intent.putExtra(DocumentsActivity.EXT_INT_TYPE, DocumentsActivity.TYPE_USER);
+                startActivity(intent);
                 break;
         }
     }
